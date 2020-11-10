@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/mine/mine",
+    "pages/checkin/checkin",
+    "pages/information/information",
+    "pages/query/query",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "考核签到",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "请点击确定"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#69d2e7",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/icon1.png",
+        "selectedIconPath": "images/icon1.1.png",
+        "text": "我的"
+      },
+      {
+        "pagePath": "pages/checkin/checkin",
+        "iconPath": "images/icon3.png",
+        "selectedIconPath": "images/icon3.1.png",
+        "text": "签到"
+      }
+      
+    ]
+  }
+}

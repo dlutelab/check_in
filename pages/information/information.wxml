@@ -1,0 +1,34 @@
+  <form bindsubmit="formSubmit">
+	<view class="cu-form-group">
+		<view class="title">姓名</view>
+		<input type="text" maxlength="20" bindinput="bindTextAreaBlur1" placeholder="{{name}}"></input>
+  </view>
+  <view class="cu-form-group">
+		<view class="title">学号</view>
+		<input type="number" maxlength="20" bindinput="bindTextAreaBlur0" placeholder="{{id}}"></input>
+  </view>
+  <view class="cu-form-group">
+		<view class="title">联系方式</view>
+		<input type="number" maxlength="20" bindinput="bindTextAreaBlur2" placeholder="{{tel}}"></input>
+  </view>
+	<view class="cu-form-group">
+		<view class="title">年级</view>
+		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+			<view class="picker">
+				{{index}}
+			</view>
+		</picker>
+	</view>
+  <radio-group class="block">
+		<view class="cu-form-group margin-top">
+			<view class="title">电子组</view>
+			<radio checked></radio>
+		</view>
+		<view class="cu-form-group">
+			<view class="title">软件组</view>
+			<radio checked></radio>
+    </view>
+    </radio-group>
+    <button class="buttonsty" type="primary" form-type="submit">提交</button>
+</form>
+

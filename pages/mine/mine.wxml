@@ -1,0 +1,35 @@
+<!--pages/mine/mine.wxml-->
+<view class='more_container'>
+ <view class='more'>
+    <view class='more_bd'>
+      <view class='item_container'>
+        <navigator url="/pages/information/information" class='item_content_container'>
+          <view class='item_hd_container'>
+            <image src='/images/book.png' class='item_image'></image>
+          </view>
+          <view class='item_bd_container'>我的信息</view>
+          <view class='item_ft_container'>
+            <image src='/images/nav.png' class='item_image'></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class='more'>
+    <view class='more_bd'>
+      <view class='item_container'>
+        <navigator url="/pages/query/query" class='item_content_container'>
+          <view class='item_hd_container'>
+            <image src='/images/score.png' class='item_image'></image>
+          </view>
+          <view class='item_bd_container'>时长统计</view>
+          <view class='item_ft_container'>
+            <image src='/images/nav.png' class='item_image'></image>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  </view>

@@ -1,0 +1,25 @@
+<view class="page-body">
+  <view class="page-section">
+    <view class='page-section-title'>姓名: </view>
+    <view class="show-time">
+      <text class="time">{{name}}</text>
+    </view>
+    <view class='page-section-title'>签到时间: </view>
+    <view class="show-time">
+      <text class="time" >{{checkintime}}</text>
+    </view>
+    <view class="page-section-title">签退时间: </view>
+    <view class="show-time">
+      <text class="time">{{checkouttime}}</text>
+    </view>
+    <view class="page-section-title">本次签到时长: </view>
+    <view class="show-time">
+      <text class="time">{{totaltime}}</text>
+    </view>
+  </view>
+  <view class="botton-section">
+      <button  type="primary" bindtap="checkin">签到</button>
+      <button type="warn" bindtap="checkout">签退</button>
+  </view>
+
+</view>

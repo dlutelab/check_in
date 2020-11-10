@@ -1,0 +1,26 @@
+/* pages/query/query.wxss */
+
+.container {
+  width: 750rpx;
+  padding-top: 25rpx;
+}
+
+.text_contianer {
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25rpx;
+  padding-top: 50rpx;
+}
+
+.text{
+  width: 700rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  box-shadow: 0 0 25rpx #ccc;
+  font-size: 60rpx;
+  box-sizing: border-box;
+  color: #3a4344;
+  padding: 10rpx 25rpx;
+  margin-top:25rpx;
+}

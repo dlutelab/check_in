@@ -1,0 +1,9 @@
+<!--pages/query/query.wxml-->
+<view class='container'>
+<view class = 'text_container'>
+  <view class = 'text'>
+    <text>这周签到的总时长为：\n</text>
+    <text>{{totaltime}}</text>
+  </view>
+</view>
+</view>

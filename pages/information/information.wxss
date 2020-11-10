@@ -1,0 +1,33 @@
+textarea {
+  width: 700rpx;
+  padding: 20rpx 0;
+}
+
+.textarea-wrp {
+  padding: 0 25rpx;
+  background-color: #fff;
+  border: 3rpx solid #dce4ec;
+}
+
+.page-section{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+
+.page-section:last-child{
+  margin-bottom: 0;
+}
+
+.page-section-title{
+  font-size: 32rpx;
+  color: #2927b1;
+  margin-bottom: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.buttonsty{
+  color: #1c221c;
+  height: 100rpx;
+  width: 50%;
+  
+}

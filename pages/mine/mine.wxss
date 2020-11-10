@@ -1,0 +1,68 @@
+/* pages/mine/mine.wxss */
+
+.more_container {
+  width: 750rpx;
+  padding-top: 45rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  box-sizing: border-box;
+}
+
+.more {
+  width: 700rpx;
+  background-color: rgb(255, 255, 255);
+  box-sizing: border-box;
+  margin-bottom: 45rpx;
+  border-radius: 10rpx;
+}
+
+.more_bd {
+  width: 700rpx;
+  box-sizing: border-box;
+}
+
+.item_container {
+  width: 700rpx;
+  height: 100rpx;
+}
+
+.item_border {
+  background-color: #E6E6E6;
+  width: 660rpx;
+  height: 2rpx;
+  margin-left: 20rpx;
+}
+
+.item_content_container {
+  box-sizing: border-box;
+  width: 700rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+}
+
+.item_hd_container {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.item_image {
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.item_bd_container {
+  padding-left: 40rpx;
+  width: 510rpx;
+  font-size: 34rpx;
+  color: #666;
+}
+
+.item_ft_container {
+  width: 100rpx;
+  height: 100rpx;
+}

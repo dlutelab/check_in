@@ -1,0 +1,35 @@
+button{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.page-body{
+  width: 750rpx;
+  padding-top: 45rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  box-sizing: border-box;
+}
+.time{
+  font-size: large;
+}
+
+.page-section{
+  margin-bottom: 50rpx;
+  box-sizing: border-box;
+}
+
+.page-section-title{
+  padding-bottom: 10rpx;
+  font-size: large;
+  font-style: normal;
+}
+
+.show-time{
+  padding-bottom: 30rpx;
+}
+
+.bottom-section{
+  margin: 0 auto;
+  width: 60%;
+}
