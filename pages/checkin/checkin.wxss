@@ -33,3 +33,12 @@ button{
   margin: 0 auto;
   width: 60%;
 }
+.png {
+	display: block;
+	margin: 0 auto;
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	overflow: hidden;
+}

@@ -1,35 +1,31 @@
-<!--pages/mine/mine.wxml-->
-<view class='more_container'>
- <view class='more'>
-    <view class='more_bd'>
-      <view class='item_container'>
-        <navigator url="/pages/information/information" class='item_content_container'>
-          <view class='item_hd_container'>
-            <image src='/images/book.png' class='item_image'></image>
-          </view>
-          <view class='item_bd_container'>我的信息</view>
-          <view class='item_ft_container'>
-            <image src='/images/nav.png' class='item_image'></image>
-          </view>
-        </navigator>
-      </view>
+<scroll-view scroll-y class="scrollPage">
+  <view class="UCenter-bg">
+    <view class="png">
+    <open-data type="userAvatarUrl" mode="widthFix"></open-data>
+    </view>
+    <view>
+    <open-data type="userNickName" class="text-xl"></open-data>
+    </view>
+    <text class="text-df">v2.0</text>
+    <image src="https://class.elab-dlut.cn/imgs/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-orange">{{onlinePeople}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-friendfill"></text> 当前在线人数</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-blue">{{totalPeople}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-friend"></text> 总人数</view>
     </view>
   </view>
-
-  <view class='more'>
-    <view class='more_bd'>
-      <view class='item_container'>
-        <navigator url="/pages/query/query" class='item_content_container'>
-          <view class='item_hd_container'>
-            <image src='/images/score.png' class='item_image'></image>
-          </view>
-          <view class='item_bd_container'>时长统计</view>
-          <view class='item_ft_container'>
-            <image src='/images/nav.png' class='item_image'></image>
-          </view>
-        </navigator>
-      </view>
-    </view>
+  <view class='nav-list margin-top-sm'>
+    <navigator hover-class='none' url="/pages/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}" wx:for="{{elements}}" wx:key>
+      <view class="nav-title">{{item.title}}</view>
+      <view class="nav-name">{{item.name}}</view>
+      <text class='cuIcon-{{item.icon}}'></text>
+    </navigator>
   </view>
-
-  </view>
+  </scroll-view>

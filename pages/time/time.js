@@ -10,7 +10,9 @@ Page({
     totaltime:'',
     openid:'',
     timestamp:'',
-    formatTime:''
+    formatTime:'',
+    termTimeStamp:'',
+    totalTermTime:'',
   },
 
   /**
@@ -20,7 +22,7 @@ Page({
     var that=this;
     that.data.openid=app.globalData.openid;
     wx.request({
-      url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/getinformation.php',
+      url: 'https://class.elab-dlut.cn/checkin/getinformation.php',
       data:{
         openid:that.data.openid,
       },
@@ -33,20 +35,28 @@ Page({
         that.setData({
           //totaltime:res.data[0].totaltime,
           timestamp:res.data[0].timestamp,
+          termTimeStamp:res.data[0].termTimeStamp,
         })
+        console.log(res.data);
         var formatTime = '';
+        var formatTermTime='';
         var hour = parseInt(that.data.timestamp / 3600);
         var min = parseInt((that.data.timestamp % 3600) /60);
         var sec = parseInt(that.data.timestamp - hour*3600 - min*60);
+        var termhour = parseInt(that.data.termTimeStamp / 3600);
+        var termmin = parseInt((that.data.termTimeStamp % 3600) /60);
+        var termsec = parseInt(that.data.termTimeStamp - termhour*3600 - termmin*60);
         formatTime = hour + "小时" + min + "分钟" + sec + "秒";
+        formatTermTime = termhour + "小时" + termmin + "分钟" + termsec + "秒";
         that.setData({
           totaltime:formatTime,
         })
         wx.request({
-          url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/updatetotaltime.php',
+          url: 'https://class.elab-dlut.cn/checkin/updatetotaltime.php',
           data:{
             openid:that.data.openid,
             formatTime:formatTime,
+            formatTermTime:formatTermTime,
           },
           method:'POST',
           header:
@@ -55,6 +65,7 @@ Page({
           },
           success:function(res){
             console.log('总时间更新成功');
+            console.log(res.data);
           }
       })
       }

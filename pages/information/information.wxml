@@ -1,34 +1,30 @@
-  <form bindsubmit="formSubmit">
-	<view class="cu-form-group">
+ <form bindsubmit="formSubmit">
+	<view class="cu-form-group margin-top">
 		<view class="title">姓名</view>
-		<input type="text" maxlength="20" bindinput="bindTextAreaBlur1" placeholder="{{name}}"></input>
+		<input type="text" maxlength="20" bindinput="bindTextAreaBlur1" name='name' value='{{form.name}}' placeholder="请输入姓名"></input>
   </view>
   <view class="cu-form-group">
 		<view class="title">学号</view>
-		<input type="number" maxlength="20" bindinput="bindTextAreaBlur0" placeholder="{{id}}"></input>
-  </view>
-  <view class="cu-form-group">
-		<view class="title">联系方式</view>
-		<input type="number" maxlength="20" bindinput="bindTextAreaBlur2" placeholder="{{tel}}"></input>
+		<input type="text" maxlength="20" name='id' value='{{form.id}}'bindinput="bindTextAreaBlur0" placeholder="请输入学号"></input>
   </view>
 	<view class="cu-form-group">
 		<view class="title">年级</view>
-		<picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
-			<view class="picker">
-				{{index}}
+		<picker bindchange="PickerChange"  name='grade' value="{{index}}" range="{{picker}}">
+			<view class="picker" >
+				{{index?picker[index]:'请选择年级'}}
 			</view>
 		</picker>
 	</view>
-  <radio-group class="block">
+  <radio-group class="block" name='group' bindchange="changeGroup">
 		<view class="cu-form-group margin-top">
 			<view class="title">电子组</view>
-			<radio checked></radio>
+			<radio checked value="电子组"></radio>
 		</view>
 		<view class="cu-form-group">
 			<view class="title">软件组</view>
-			<radio checked></radio>
+			<radio checked value="软件组"></radio>
     </view>
     </radio-group>
-    <button class="buttonsty" type="primary" form-type="submit">提交</button>
+    <button class="buttonsty margin-top" type="primary" form-type="submit">提交</button>
 </form>
 

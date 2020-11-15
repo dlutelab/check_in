@@ -1,8 +1,17 @@
-<view class="page-body">
+<view class="padding text-left">
+<view class='padding-xl radius shadow-warp bg-white margin-top'>
   <view class="page-section">
     <view class='page-section-title'>姓名: </view>
     <view class="show-time">
       <text class="time">{{name}}</text>
+    </view>
+    <view class="page-section-title">组别: </view>
+    <view class="show-time">
+      <text class="time">{{groups}}</text>
+    </view>
+    <view class="page-section-title">年级: </view>
+    <view class="show-time">
+      <text class="time">{{grade}}</text>
     </view>
     <view class='page-section-title'>签到时间: </view>
     <view class="show-time">
@@ -17,9 +26,9 @@
       <text class="time">{{totaltime}}</text>
     </view>
   </view>
-  <view class="botton-section">
-      <button  type="primary" bindtap="checkin">签到</button>
-      <button type="warn" bindtap="checkout">签退</button>
-  </view>
-
 </view>
+</view>
+  <view class="botton-section">
+      <button class='bg-green  radius shadow-warp' bindtap="checkin">签到</button>
+      <button class='bg-red  radius shadow-warp' bindtap="checkout">签退</button>
+  </view>

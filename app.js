@@ -10,7 +10,13 @@ App({
     checkintime:'',
     checkouttime:'',
     time:'',
+    latitude: '',
+    longitude: '',
     totaltime:'',
+    ax:'',
+    ay:'',
+    bx:'',
+    by: '', 
     ColorList: [{
       title: '嫣红',
       name: 'red',
@@ -89,18 +95,32 @@ App({
   ]
       },
   onLaunch: function () {
+    var that=this;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     var that =this;
 
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        let capsule = wx.getMenuButtonBoundingClientRect();
+		if (capsule) {
+		 	this.globalData.Custom = capsule;
+			this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
+		} else {
+			this.globalData.CustomBar = e.statusBarHeight + 50;
+		}
+      }
+    })
+
     wx.login({
       success: function (res) {
         console.log(res.code)
         //发送请求
         wx.request({
-          url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/ask.php', //接口地址
+          url: 'https://class.elab-dlut.cn/checkin/ask.php', //接口地址
           data: { code: res.code },
           header: {
             'content-type': 'application/json' //默认值

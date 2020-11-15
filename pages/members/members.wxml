@@ -1,0 +1,18 @@
+<view id="article-list" >
+   <view wx:for="{{doctor_information}}" wx:key="id" class="article-item deweb">
+     <image data-id="{{index}}" src="{{item.img}}" mode="aspectFill"/>
+     <view class="article-info"> 
+       <view class="title">
+         {{item.name}}
+       </view>
+       <view class="describe">
+         {{item.describe}}
+       </view>
+     </view>
+   </view>
+</view>
+
+<view>
+    
+</view>
+

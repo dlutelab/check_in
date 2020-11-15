@@ -9,9 +9,14 @@ Page({
   data: {
     openid:'',
     name:'',
+    groups:'',
+    grade:'',
     checkintime:'',
+    checkintimestamp:'',
     checkouttime:'',
     totaltime:'',
+    termtotaltime:'',
+    termtimestamp:'',
     flag:'',
     latitude:'',
     longitude:'',
@@ -43,7 +48,7 @@ Page({
     console.log(that.data.openid+"aklgjwehgioahweioghaiowehgiheg");
 
     wx.request({
-      url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/getinformation.php',
+      url: 'https://class.elab-dlut.cn/checkin/getinformation.php',
       data:{
         openid: that.data.openid,
       },
@@ -53,10 +58,18 @@ Page({
         "Content-type": "application/x-www-form-urlencoded"
       },
       success: function(res){
+        if(res.data[0].flag == 0){
+          that.setData({
+            checkintime: res.data[1].checkintime,
+          })
+        }
         that.setData({
           name: res.data[0].name,
+          openid: res.data[0].openid,
           id: res.data[0].id,
           flag: res.data[0].flag,
+          groups: res.data[0].groups,
+          grade: res.data[0].grade,
         })
       }
     })
@@ -77,7 +90,6 @@ Page({
        })
        console.log(that.data.ax);
       }
-      
     })
   },
 
@@ -114,6 +126,7 @@ Page({
    */
   onPullDownRefresh: function () {
 
+
   },
 
   /**
@@ -133,10 +146,17 @@ Page({
 
     var that = this;
     //console.log("签到时间戳" + app.globalData.checkintime);
+    if(that.data.name == ''){
+      wx.showToast({
+        title: '请重新进入小程序',
+        icon:'none',
+      })
+    }
+    else{
     if(that.data.flag == 1){
-    
     console.log(that.data.bx+'  '+that.data.ax+'  '+that.data.ay+'   '+that.data.by);
-    if(that.latitude>=that.data.bx&&that.latitude<=that.data.ax&&that.longitude>=that.data.ay&&that.longitude<=that.data.by){
+    //if(that.latitude>=that.data.bx&&that.latitude<=that.data.ax&&that.longitude>=that.data.ay&&that.longitude<=that.data.by){
+      if(1){
       var TIME = util.formatTime(new Date());
       var checkintimestamp = Date.parse(new Date());
       app.globalData.checkintime = checkintimestamp / 1000;
@@ -144,7 +164,7 @@ Page({
         checkintime: TIME,
       })
     wx.request({
-      url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/getinformation.php',
+      url: 'https://class.elab-dlut.cn/checkin/getinformation.php',
       data:{
         openid: that.data.openid,
       },
@@ -162,12 +182,13 @@ Page({
         })
         console.log(that.data.timestamp);
         wx.request({
-          url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/checkinrecord.php',
+          url: 'https://class.elab-dlut.cn/checkin/checkinrecord.php',
           data: {
             checkintime: TIME,
             name: that.data.name,
             openid: that.data.openid,
-            id: that.data.id,
+            id:that.data.id,
+            grade:that.data.grade,
             times: that.data.times,
             checkintimestamp:app.globalData.checkintime
           },
@@ -179,7 +200,7 @@ Page({
           success: function(res){
             that.data.flag=0;
             wx.request({
-            url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/updateflag.php',
+            url: 'https://class.elab-dlut.cn/checkin/updateflag.php',
             data:{
               openid: that.data.openid,
               flag: that.data.flag,
@@ -190,7 +211,7 @@ Page({
               "Content-type": "application/x-www-form-urlencoded"
             },
             success:function(res){
-              console.log("flag更新");
+              console.log(res.data);
             },
           })
          }
@@ -201,6 +222,7 @@ Page({
     })
     that.setData({
       checkouttime:'',
+      totaltime:'',
     })
   }
     else{
@@ -228,14 +250,16 @@ Page({
       duration:2000
     })
   }
-  },
+  }
+},
 
   checkout: function(e){
     var that = this;
     if(that.data.flag == 0){
-      if(that.latitude>=that.data.bx&&that.latitude<=that.data.ax&&that.longitude>=that.data.ay&&that.longitude<=that.data.by){
+      //if(that.latitude>=that.data.bx&&that.latitude<=that.data.ax&&that.longitude>=that.data.ay&&that.longitude<=that.data.by){
+        if(1){
         wx.request({
-          url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/getcheckintimestamp.php',
+          url: 'https://class.elab-dlut.cn/checkin/getcheckintimestamp.php',
           data:{
             openid: that.data.openid
           },
@@ -250,7 +274,8 @@ Page({
             that.setData({
               times:res.data[0].times,
               checkintimestamp:res.data[1].checkintimestamp,
-              timestamp:res.data[0].timestamp
+              timestamp:res.data[0].timestamp,
+              termtimestamp:res.data[0].termTimeStamp,
             })
             var TIME = util.formatTime(new Date());
         var checkouttime = Date.parse(new Date());
@@ -263,6 +288,7 @@ Page({
         console.log(time);
         var formatTime = '';
         var allformatTime = '';
+        var termformatTime = '';
         var hour = parseInt(time / 3600);
         var min = parseInt((time % 3600) /60);
         var sec = parseInt(time - hour*3600 - min*60);
@@ -271,14 +297,21 @@ Page({
         var allhour = parseInt(alltime / 3600);
         var allmin = parseInt((alltime % 3600) /60);
         var allsec = parseInt(alltime - allhour*3600 - allmin*60);
+
+        var termtime = that.data.termtimestamp -1+1 + time;
+        var termhour = parseInt(termtime / 3600);
+        var termmin = parseInt((termtime % 3600) /60);
+        var termsec = parseInt(termtime - termhour*3600 - termmin*60);
+
         formatTime = hour + "小时" + min + "分钟" + sec + "秒";
         allformatTime = allhour + "小时" + allmin + "分钟" + allsec + "秒";
+        termformatTime = termhour + "小时" + termmin + "分钟" + termsec + "秒";
           that.setData({
             checkouttime: TIME,
             totaltime: formatTime,
           })
           wx.request({
-            url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/checkoutrecord.php',
+            url: 'https://class.elab-dlut.cn/checkin/checkoutrecord.php',
             data:{
               openid: that.data.openid,
               checkouttime: TIME,
@@ -293,12 +326,14 @@ Page({
             success: function(res){
               console.log('签退');
               wx.request({
-                url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/updateuser.php',
+                url: 'https://class.elab-dlut.cn/checkin/updateuser.php',
                 data:{
                   openid: that.data.openid,
                   times: that.data.times,
                   totaltime: allformatTime,
+                  termformatTime: termformatTime,
                   timestamp: alltime,
+                  termstamp: termtime,
                   flag: that.data.flag,
                 },
                 method:'POST',
@@ -308,9 +343,10 @@ Page({
                 },
                 success:function(res){
                   console.log("用户更新");
+                  console.log(res.data);
                   that.data.flag=1;
                     wx.request({
-                    url: 'https://class.dlut-elab.com/feedback/dunjiaxuan/updateflag.php',
+                    url: 'https://class.elab-dlut.cn/checkin/updateflag.php',
                     data:{
                       openid: that.data.openid,
                       flag: that.data.flag,
